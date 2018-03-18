@@ -1,2 +1,6 @@
 # Body-clock
 I worked on a project to send message regarding a woman’s menstrual period in an ambient display way.
+Context:
+The ambient device we made is a personal device that will be setting up in a personal space like a bedroom. The device will tell the owner when four events would happen: pre-period, period, ovulation and post-period. By telling the owner when the period will come, it gives her enough time to get necessary supplies for this upcoming event. Inspired by the read "Enchanted Objects", we though of incorporating these functions within everyday objects to make the information even more transparent to others. 
+
+I planned to use light (powered by a Neo Pixel) as the ambient display that changes color according to dates. We have two sets of lamps prepared, one with a 3D printed lamp that is semi-transparent so that the light will come out gently and elegantly which can serve as an aesthetic, feminist object. The second lamp is a clock-shaped cover that will be put on the Neo Pixel to show a concept of “body clock” that only the owner would understand. Four colors were picked up to match the four different events as blue for pre-period, red for period, green for ovulation and yellow for post-period. One day, if the device is showing a blue light (changed from yellow), the owner would know that her period is coming in two days. 
