@@ -1,0 +1,59 @@
+#include<neopixel.h>
+
+#define PIXEL_PIN D6
+#define PIXEL_COUNT 16
+#define PIXEL_TYPE WS2812
+
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
+
+void setup() {
+  Particle.publish("test1","insideSetup");
+  Serial.begin(9600);
+
+  pinMode(PIXEL_PIN, OUTPUT);
+  strip.begin();
+  // strip.setPixelColor(0,255,0,0);
+  strip.setBrightness(100);
+  strip.show();
+  // Initialize all pixels to 'off'
+  Particle.subscribe("period", periodHandler);
+  Particle.subscribe("ovulation", ovulationHandler);
+  Particle.subscribe("preperiodhandler", preperiodHandler);
+  Particle.subscribe("postperiod", postperiodHandler);
+
+
+}
+void loop(){
+
+delay(1000);
+}
+
+
+void periodHandler(const char *event, const char *data )
+{
+  Particle.publish("test1","periods time");
+  SetLedColor(strip.Color(255, 0, 0));
+}
+
+void ovulationHandler(const char *event, const char *period)
+ {
+   Particle.publish("test1","ovulation time");
+   SetLedColor(strip.Color(0, 255, 0));
+ }
+ void preperiodHandler(const char *event,const char *period)
+  {
+    Particle.publish("test1","preperiods time");
+    SetLedColor(strip.Color(0, 0, 255));
+  }
+  void postperiodHandler(const char *event , const char *period)
+   {
+     Particle.publish("test1","postperiods time");
+     SetLedColor(strip.Color(255, 75, 0));
+   }
+   void SetLedColor(uint32_t c) {
+    for(uint16_t i=0; i<strip.numPixels(); i++) {
+        strip.setPixelColor(i, c);
+        strip.show();
+
+    }
+   }
